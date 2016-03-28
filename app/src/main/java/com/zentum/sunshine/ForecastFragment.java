@@ -1,6 +1,5 @@
 package com.zentum.sunshine;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -33,8 +32,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -60,13 +57,13 @@ public class ForecastFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        Toast.makeText(getActivity(), "Settings: " + id, Toast.LENGTH_SHORT).show();
         if (id == R.id.action_settings_main) {
             Toast.makeText(getActivity(), "Settings", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getActivity(), SettingsActivity.class);
             startActivity(intent);
             return true;
         } else if (id == R.id.action_refresh) {
+            Toast.makeText(getActivity(), "Refresh", Toast.LENGTH_SHORT).show();
             updateWeather();
             return true;
         }
@@ -127,7 +124,7 @@ public class ForecastFragment extends Fragment {
             String format = "json";
             String units = "metric";
             int numDays = 7;
-            String openweather_appid = "b1b15e88fa797225412429c1c50c122a";
+            String openweather_appid = "e3f3ce5f2aff3fd45392abb28a6ff7b1";
 
             try {
                 // Construct the URL for the OpenWeatherMap query
@@ -243,7 +240,7 @@ public class ForecastFragment extends Fragment {
         /**
          * Take the String representing the complete forecast in JSON Format and
          * pull out the data we need to construct the Strings needed for the wireframes.
-         * <p>
+         * <p/>
          * Fortunately parsing is easy:  constructor takes the JSON string and converts it
          * into an Object hierarchy for us.
          */
